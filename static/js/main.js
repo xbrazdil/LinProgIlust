@@ -25,6 +25,16 @@ async function drawRegion(){
  const res=await fetch('/compute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
  const r=await res.json();
  Plotly.newPlot('plot',r.data,r.layout);
+ // clear info box
+ const info=$('obj-info'); if(info) info.textContent='';
+ // show objective at clicked point
+ const gd=$('plot');
+ gd.on('plotly_click', ev => {
+    if(objA!=null && objB!=null){
+      const x=ev.points[0].x, y=ev.points[0].y;
+      info.textContent = 'obj='+(objA*x+objB*y).toFixed(3)+' at ('+x.toFixed(3)+','+y.toFixed(3)+')';
+    }
+ });
  const tbl=$('tableaus'); tbl.innerHTML='';
  r.tableaus?.forEach((st,i)=>{
    const div=document.createElement('div');
