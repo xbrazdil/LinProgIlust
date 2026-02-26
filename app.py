@@ -156,10 +156,10 @@ def compute():
                     for xi in [i*0.5 for i in range(-20,21)]:
                         line_x.append(xi)
                         line_y.append((v - objA*xi)/objB)
-                    data_list.append({'x':line_x,'y':line_y,'mode':'lines','line':{'color':'gray','dash':'dot'},'opacity':0.5,'showlegend':False})
+                    data_list.append({'x':line_x,'y':line_y,'mode':'lines','line':{'color':'gray','dash':'dot'},'opacity':0.5,'showlegend':False,'hoverinfo':'none'})
                 elif abs(objA) > 1e-9:
                     xval = v/objA
-                    data_list.append({'x':[xval,xval],'y':[-10,10],'mode':'lines','line':{'color':'gray','dash':'dot'},'opacity':0.5,'showlegend':False})
+                    data_list.append({'x':[xval,xval],'y':[-10,10],'mode':'lines','line':{'color':'gray','dash':'dot'},'opacity':0.5,'showlegend':False,'hoverinfo':'none'})
             v += step
         # optimal line
         if abs(objB) > 1e-9:
@@ -167,10 +167,10 @@ def compute():
             for xi in [i*0.5 for i in range(-20,21)]:
                 line_x.append(xi)
                 line_y.append((optimal - objA*xi)/objB)
-            data_list.append({'x':line_x,'y':line_y,'mode':'lines','line':{'color':'green','width':2},'name':'Objective'})
+            data_list.append({'x':line_x,'y':line_y,'mode':'lines','line':{'color':'green','width':2},'name':'Objective','hoverinfo':'none'})
         elif abs(objA) > 1e-9:
             xval = optimal/objA
-            data_list.append({'x':[xval,xval],'y':[-10,10],'mode':'lines','line':{'color':'green','width':2},'name':'Objective'})
+            data_list.append({'x':[xval,xval],'y':[-10,10],'mode':'lines','line':{'color':'green','width':2},'name':'Objective','hoverinfo':'none'})
     response['data'] = data_list
     response['layout'] = {'xaxis':{'range':[-1,10]},'yaxis':{'range':[-1,10]},'width':600,'height':600}
     return jsonify(response)
