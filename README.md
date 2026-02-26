@@ -2,7 +2,7 @@
 
 This simple web application allows you to specify a linear program with two variables (x and y) and an arbitrary number of linear constraints of the form `a x + b y ≤ c`.
 
-The feasible region is computed and displayed graphically using Plotly.js in the browser.
+All linear‑programming computations (feasible vertices, simplex tableaus, contour lines, etc.) are performed on the Python server; the browser merely renders the JSON response using Plotly.js.
 
 ## Running
 
