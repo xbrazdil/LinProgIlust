@@ -19,7 +19,7 @@ async function drawRegion(){
  const objA=+$('obj-a').value, objB=+$('obj-b').value;
  const payload={constraints};
  if(!isNaN(objA)&&!isNaN(objB)){
-  payload.objective={a:objA,b:objB};
+  payload.objA=objA; payload.objB=objB;
   payload.maximize=$('lp-form').querySelector('input[name="opt-type"]:checked').value==='max';
  }
  const res=await fetch('/compute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
